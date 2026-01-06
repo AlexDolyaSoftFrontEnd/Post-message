@@ -1,0 +1,19 @@
+.comment {
+    padding: var(--space-5);
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .comment__author {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-2);
+  }
+  
+  .comment__message {
+    font-size: var(--font-size-md);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+  }
+  

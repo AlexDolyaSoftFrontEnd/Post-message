@@ -1,0 +1,42 @@
+.commentForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  .commentForm__input,
+  .commentForm__textarea {
+    min-height: var(--control-height);
+    padding: 11px 14px;
+  
+    font-size: var(--font-size-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+  
+  .commentForm__textarea {
+    min-height: 96px;
+    resize: vertical;
+  }
+  
+  .commentForm__submit {
+    align-self: flex-start;
+    height: var(--control-height);
+    padding: 0 var(--space-5);
+  
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+  
+    background: var(--color-accent);
+    color: #ffffff;
+  
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+  }
+  
+  .commentForm__submit:disabled {
+    opacity: 0.6;
+    cursor: default;
+  }
+  

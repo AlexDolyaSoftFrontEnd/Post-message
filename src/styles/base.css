@@ -1,0 +1,17 @@
+html {
+    font-family: var(--font-family-system);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  body {
+    margin: 0;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+  
+  h1 {
+    font-size: 28px;
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-6);
+  }
+  
