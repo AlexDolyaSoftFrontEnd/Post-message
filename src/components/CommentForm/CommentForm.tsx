@@ -1,27 +1,37 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import styles from "./CommentForm.module.css";
 
-type Props = {
+interface CommentFormProps {
   onSubmit: (author: string, message: string) => void;
-};
+}
 
-export function CommentForm({ onSubmit }: Props) {
+export function CommentForm({ onSubmit }: CommentFormProps) {
   const [author, setAuthor] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!author.trim() || !message.trim()) return;
+  const isFormValid = author.trim().length > 0 && message.trim().length > 0;
 
-    onSubmit(author.trim(), message.trim());
-    setAuthor("");
-    setMessage("");
-  };
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      if (!isFormValid) {
+        return;
+      }
+
+      onSubmit(author.trim(), message.trim());
+
+      setAuthor("");
+      setMessage("");
+    },
+    [author, message, isFormValid, onSubmit]
+  );
 
   return (
     <form className={styles.commentForm} onSubmit={handleSubmit}>
       <input
         className={styles.commentForm__input}
+        type="text"
         placeholder="Ваше имя"
         value={author}
         onChange={(e) => setAuthor(e.target.value)}
@@ -37,7 +47,7 @@ export function CommentForm({ onSubmit }: Props) {
       <button
         className={styles.commentForm__submit}
         type="submit"
-        disabled={!author || !message}
+        disabled={!isFormValid}
       >
         Отправить
       </button>
